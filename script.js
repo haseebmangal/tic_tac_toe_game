@@ -22,6 +22,7 @@ const winPtrns = [
 
 const resetGame = () => {
     turnO = true;
+    count = 0;
     enableBoxes();
     msgContainer.classList.add("hide");  
 }
@@ -30,19 +31,28 @@ const resetGame = () => {
 // adding event listeners to all the boxes and handling the clicks
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
-        console.log("box clicked");
-        if (turnO) {
+        if (turnO) { // true means Player O's turn
             box.innerText = "O";
             turnO = false;
-        } else {
+        } else { // false means Player X's turn
             box.innerText = "X";
             turnO = true;
         }
         box.disabled = true;
+        count++;
 
-        checkWin();
+        let isWinner = checkWin();
+        if (count === 9 && !isWinner) {
+           gameDraw();
         }
-)})
+    });
+    })
+
+const gameDraw = () => {
+   msg.innerText = "Game was a Draw!";
+   msgContainer.classList.remove("hide");
+   disableBoxes();
+;}
 
 const disableBoxes = () => {
     for(let box of boxes) {
@@ -78,4 +88,5 @@ const checkWin = () => {
 
 }
 newGameBtn.addEventListener("click", resetGame);
-resetBtn.addEventListener("click", resetGame)
+resetBtn.addEventListener("click", resetGame )
+
