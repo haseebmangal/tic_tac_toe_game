@@ -42,6 +42,14 @@ main {
     cursor: pointer;
     background-color: #dde09a;
 }
+/* .mark-o {
+    background-color: #cfe8ff;
+    color: #003a6b;
+}
+.mark-x {
+    background-color: #ffd9d9;
+    color : #7a0000;
+} */
 
 #resetBtn {
     padding: 1rem;
